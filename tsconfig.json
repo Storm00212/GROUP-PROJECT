@@ -1,54 +1,38 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
+  // ✅ Full TypeScript configuration for Node + Express + SQL Server (ESM)
   "compilerOptions": {
-    // File Layout
-     "rootDir": "./src",
-     "outDir": "./dist",
+    /* === File Layout === */
+    "rootDir": "./src",
+    "outDir": "./dist",
 
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
-    "target": "es2022",
-    "types": [],
-    // For nodejs:
-    // "lib": ["esnext"],
-    // "types": ["node"],
-    // and npm install -D @types/node
+    /* === ECMAScript / Module Settings === */
+    "target": "ES2022",               // Modern JS features
+    "module": "ESNext",               // Enables import/export syntax
+    "moduleResolution": "Node",       // Simplifies import resolution for tsx
+    "esModuleInterop": true,          // Allows default imports from CommonJS modules
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,        // In case you import config JSONs
+    "isolatedModules": true,          // Required by tsx for on-the-fly compilation
+    "verbatimModuleSyntax": false,    // ✅ Lets TS auto-strip type-only imports
+    "forceConsistentCasingInFileNames": true,
 
-    // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-
-    // Stricter Typechecking Options
+    /* === Type Checking Options === */
+    "strict": true,                   // Enables all strict type checking
+    "skipLibCheck": true,             // Faster build; skip .d.ts verification
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
 
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
+    /* === Declarations / Source Maps === */
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
 
-    // Recommended Options
-    "strict": true,
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "moduleResolution": "nodenext",
-    "forceConsistentCasingInFileNames": true
+    /* === Node Environment === */
+    "types": ["node"],                // Includes Node.js types
+    "lib": ["ESNext"],                // Modern library support
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.spec.ts"
-  ],
+
+  /* === Files to Include / Exclude === */
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.spec.ts"]
 }
